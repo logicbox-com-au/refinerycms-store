@@ -10,18 +10,3 @@
     %h2= @product.name
     %h3.brand= @product.brand.name
     = raw @product.description
-  #product_menu.prepend-8
-    %ul
-      %li
-        = love_button(@product)
-      %li Add to cart
-      %li share
-%section.span-22.last.prepend-1.relatedContent
-  %h3 Looks with this product
-  .span-20.last.prepend-1
-    = render :partial => 'shared/related_videos', :locals => { :related_videos => @related_videos }
-%section.span-22.last.prepend-1.relatedContent
-  %h3 Tell us why you love this product
-  .span-22.last
-    = comment_list(@product)
-    = comment_form(@product)

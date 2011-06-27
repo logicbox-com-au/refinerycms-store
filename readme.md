@@ -4,8 +4,9 @@ Simple engine to create a product catalog and basic shopping cart
 
 ## Install
 
-Add to your Gemfile
+Refinerycms-store views are in haml so add to your Gemfile
 
+    gem 'haml'
     gem 'refinerycms-store', '0.0.1'
 
 And run

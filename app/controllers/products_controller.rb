@@ -3,7 +3,6 @@ class ProductsController < ApplicationController
   before_filter :find_page
 
   def index
-    
     order = 'created_at DESC'
     if params[:order]
       order = 'loves_count DESC' if params[:order] == 'loved'
@@ -32,7 +31,6 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @related_videos = Video.by_product @product
 
     # you can use meta fields from your model instead (e.g. browser_title)
     # by swapping @page for @product in the line below:

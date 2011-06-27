@@ -9,6 +9,7 @@ Gem::Specification.new do |s|
   s.summary     = "Store engine for Refinery CMS"
   s.description = "Store engine for Refinery CMS"
 
+  s.add_dependency('haml', '> 3.1.0')
   s.rubyforge_project = "refinerycms-store"
   s.require_paths = ["lib"]
   s.files             = Dir['lib/**/*', 'config/**/*', 'app/**/*']
