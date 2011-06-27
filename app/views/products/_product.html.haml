@@ -1,0 +1,11 @@
+.item.product.span-4
+  = link_to product_path(product) do
+    %span.image
+      - if product.picture
+        = image_tag product.picture.thumbnail('150x130#').url if product.picture
+      - else
+        = image_tag 'small-product.jpg'
+    %span.name
+      = product.name
+    %span.info
+      = number_to_currency product.price

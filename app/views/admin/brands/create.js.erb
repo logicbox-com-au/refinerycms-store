@@ -1,0 +1,22 @@
+var errors = <%= @brand.errors.length %>;
+if (errors > 0) {
+  var error_messages = '';
+  <% @brand.errors.each do |field, message| %>
+    $('#brand_<%= field %>').wrap('<span class="fieldWithErrors" />');
+    $('label[for="brand_<%= field %>"').wrap('<span class="fieldWithErrors" />');
+    error_messages += '<li><%= "#{field.to_s.capitalize} #{escape_javascript(message)}" %></li>';
+  <% end %>
+
+  $('#flash_container').html('<div class="errorExplanation" id="errorExplanation"><p>There were problems:</p><ul>' + error_messages + '</ul></div>');
+  $('.save-loader').hide();
+} else {
+  parent.$("#product_brand_id").append("<%= escape_javascript(options_for_select [[@brand.name, @brand.id]])%>");
+  parent.$("#product_brand_id").val(<%= @brand.id %>);
+
+  // Close dialog
+  $(parent.document.body).removeClass('hide-overflow');
+  window_dialog = parent.$('.ui-dialog-content');
+  window_dialog.filter(':data(dialog)').dialog('close');
+  window_dialog.remove();
+}
+

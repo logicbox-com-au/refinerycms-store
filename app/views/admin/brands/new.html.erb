@@ -1,0 +1,23 @@
+<%= form_for [:admin, @brand], :remote => true do |form| %>
+  <div class = "field" >
+    <%= form.label :name %>
+    <%= form.text_field :name %><br />
+  </div>
+
+  <%= render :partial => "/shared/admin/form_actions",
+    :locals => {
+      :f => form,
+      :cancel_url => '',
+      :hide_cancel => false,
+      :continue_editing => false,
+      :hide_delete => true
+    } %>
+<% end %>
+
+<% content_for :javascripts do %>
+  <script>
+    $(document).ready(function(){
+      $('.form-actions-dialog #cancel_button').not('.wym_iframe_body .form-actions-dialog #cancel_button').click(close_dialog);
+    });
+  </script>
+<% end %>

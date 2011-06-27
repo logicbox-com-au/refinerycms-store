@@ -1,0 +1,32 @@
+  <div class='field one_row_field'>
+    <%= f.label :category -%>
+    <%= f.collection_select( 'category_id', categories, :id, :name, {:prompt => true}, {:id => 'categories_select'}) -%>
+    <%= f.label :sub_category -%>
+    <%= f.collection_select( 'sub_category_id', resource.category ? resource.category.children : [], :id, :name, {:prompt => true}, {:id => 'sub_categories_select'}) -%>
+    <%= link_to 'Add category', new_admin_category_path(:dialog => true, :width => 300, :height => 250),
+                                                     { :class => 'button', :id => 'add-category-link' } %>
+  </div>
+
+  <div id="hidden_subcategories" class="hidden" >
+  <% categories.each do |category| %>
+    <%=  collection_select('sub_categories', "for_#{category.id}", category.children, :id, :name, :prompt => true) %>
+  <% end %>
+  </div>
+
+<% content_for :javascripts do %>
+  <script>
+    $(document).ready(function(){
+      $("#categories_select").change(function(){
+        var parent_category_id = "";
+        var sub_category_options = "";
+        $("select#categories_select option:selected").each(function () {
+          parent_category_id += $(this).val();
+        });
+        sub_category_options = $("#sub_categories_for_" + parent_category_id ).html();
+        $("select#sub_categories_select").empty();
+        $("select#sub_categories_select").append( sub_category_options );
+      });
+    });
+  </script>
+<% end %>
+
