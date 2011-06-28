@@ -10,3 +10,9 @@
     %h2= @product.name
     %h3.brand= @product.brand.name
     = raw @product.description
+  #product_menu.prepend-8
+    %ul
+      %li
+        = love_button(@product)
+      %li Add to cart
+      %li share
