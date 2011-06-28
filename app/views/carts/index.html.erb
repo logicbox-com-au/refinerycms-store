@@ -1,0 +1,11 @@
+<% content_for :body_content_left do %>
+  <ul id="carts">
+    <% @carts.each do |cart| %>
+      <li>
+        <%= link_to cart.name, cart_path(cart) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render :partial => "/shared/content_page" %>

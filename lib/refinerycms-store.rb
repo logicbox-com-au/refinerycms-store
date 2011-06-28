@@ -33,3 +33,4 @@ module Refinerycms
     end
   end
 end
+require File.expand_path('../refinerycms-carts', __FILE__)

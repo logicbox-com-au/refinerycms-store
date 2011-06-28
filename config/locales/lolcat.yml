@@ -4,9 +4,24 @@ lolcat:
       image_picker:
         image: IMAGE
   plugins:
+    carts: 
+      title: Carts
     products:
       title: Products
   admin:
+    carts: 
+      actions: 
+        create_new: CREATE NEW Cart
+        reorder: REORDR Carts
+        reorder_done: DUN REORDERIN Carts
+      records: 
+        title: Carts
+        sorry_no_results: SRY! THAR R NO RESULTS FINDZ.
+        no_items_yet: THAR R NO Carts YET. CLICK "CREATE NEW Cart" 2 ADD UR FURST cart.
+      cart: 
+        view_live_html: VIEW DIS cart LIV <BR/><EM>(OPENS IN NEW WINDOW)</EM>
+        edit: EDIT DIS cart
+        delete: REMOOV DIS cart FOREVR
     products:
       actions:
         create_new: CREATE NEW Product
@@ -20,6 +35,9 @@ lolcat:
         view_live_html: VIEW DIS product LIV <BR/><EM>(OPENS IN NEW WINDOW)</EM>
         edit: EDIT DIS product
         delete: REMOOV DIS product FOREVR
+  carts: 
+    show: 
+      other: OTHR Carts
   products:
     show:
       other: OTHR Products
