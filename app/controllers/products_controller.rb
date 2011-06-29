@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   helper :love
   helper :rank
+  helper :worn
 
   before_filter :find_page
 

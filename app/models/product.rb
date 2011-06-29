@@ -26,9 +26,14 @@ class Product < ActiveRecord::Base
   belongs_to :sub_category, :class_name => 'Category'
   
   has_many :love, :as => :loveable
+  has_many :worn, :as => :wornable
 
   def loved_by?(member)
     love.map(&:member_id).include? member.id if member
+  end
+
+  def worn_by?(member)
+    worn.map(&:member_id).include? member.id if member
   end
 
   def self.by_brand(brand)
