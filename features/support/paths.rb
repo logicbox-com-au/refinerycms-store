@@ -8,6 +8,8 @@ module NavigationHelpers
 
          when /the new product form/
           new_admin_product_path
+         when /the products index/
+          products_path
         else
           nil
         end

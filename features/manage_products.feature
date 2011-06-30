@@ -19,10 +19,11 @@ Feature: Products
   Scenario: Create Valid Product
     When I go to the list of products
     And I follow "Add New Product"
-    And I fill in "Name" with "This is a test of the first string field"
+    And I fill in "Name" with "foo product"
     And I fill in "product_description" with "This is a foo description"
+    And I fill in "product_price" with "9.99"
     And I press "Save"
-    Then I should see "'This is a test of the first string field' was successfully added."
+    Then I should see "'foo product' was successfully added."
     And I should have 1 product
 
   @products-invalid @invalid
