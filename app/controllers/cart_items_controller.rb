@@ -4,8 +4,6 @@ class CartItemsController < ApplicationController
   
   def destroy
     cart = Cart.where(:member_id => @member_id).first
-    p "=============="
-    p cart
     item = cart.items.where(:id => params[:id]).first
     item.destroy
     redirect_to carts_path
