@@ -13,7 +13,8 @@
     resources :brands, :only => [:new, :create ]
     resources :categories, :only => [:new, :create ]
   end
-  resources :carts, :only => [:index, :show]
+  
+  resources :carts, :only => [:index, :create, :update]
   
   scope(:path => 'refinery', :as => 'admin', :module => 'admin') do
     resources :carts, :except => :show do
@@ -22,4 +23,5 @@
       end
     end
   end
+  resources :cart_items, :only => [:destroy]
 end

@@ -1,30 +1,35 @@
 class CartsController < ApplicationController
 
-  before_filter :find_all_carts
-  before_filter :find_page
+  before_filter :find_current_member
+  before_filter :find_shopping_cart!
 
   def index
-    # you can use meta fields from your model instead (e.g. browser_title)
-    # by swapping @page for @cart in the line below:
-    present(@page)
   end
+  
+  def create
+    product = Product.find(params[:product_id])
 
-  def show
-    @cart = Cart.find(params[:id])
+    @shopping_cart.add_item(product.id, product.price)
+    @shopping_cart.save
 
-    # you can use meta fields from your model instead (e.g. browser_title)
-    # by swapping @page for @cart in the line below:
-    present(@page)
+    redirect_to carts_path
+  end
+  
+  def update
+    cart = Cart.where(:member_id => @member_id).first
+    item = cart.items.where(:id => params[:id]).first
+    item.quantity = params[:cart_item][:quantity]
+    item.save
+    render :index
   end
 
 protected
 
-  def find_all_carts
-    @carts = Cart.order('position ASC')
+  def find_current_member
+    if member_signed_in?
+      @member_id = current_member.id
+    else
+      redirect_to new_member_session_path
+    end
   end
-
-  def find_page
-    @page = Page.where(:link_url => "/carts").first
-  end
-
 end

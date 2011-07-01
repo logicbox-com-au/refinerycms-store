@@ -2,10 +2,10 @@ class CreateCarts < ActiveRecord::Migration
 
   def self.up
     create_table :carts do |t|
-      t.string :name
       t.integer :position
+      t.integer :member_id
 
-      t.timestamps
+      t.timestamps  
     end
 
     add_index :carts, :id

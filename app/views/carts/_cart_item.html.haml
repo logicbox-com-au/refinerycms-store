@@ -1,0 +1,13 @@
+%tr
+  %td 
+    = item.product.name
+  %td
+    = number_to_currency item.price
+  %td
+    = form_for item, :url => cart_path(item) do |f|
+      = f.text_field :quantity
+      = f.submit 'Update'
+  %td
+    = number_to_currency item.subtotal
+  %td
+    = link_to "Remove", cart_item_path(item.id), :method => :delete
