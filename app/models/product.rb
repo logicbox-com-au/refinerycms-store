@@ -48,7 +48,7 @@ class Product < ActiveRecord::Base
   end
   
   def ensure_not_referenced_by_any_cart_item
-    if car_items.count.zero?
+    if cart_items.count.zero?
       return true
     else
       errors[:base] << "Cart Items present"

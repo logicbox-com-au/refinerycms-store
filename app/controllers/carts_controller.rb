@@ -8,8 +8,9 @@ class CartsController < ApplicationController
   
   def create
     product = Product.find(params[:product_id])
+    video = Video.find(params[:video_id]) unless params[:video_id].nil?
 
-    @shopping_cart.add_item(product.id, product.price)
+    @shopping_cart.add_item(product.id, product.price, video.id)
     @shopping_cart.save
 
     redirect_to carts_path

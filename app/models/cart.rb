@@ -8,12 +8,12 @@ class Cart < ActiveRecord::Base
 
   belongs_to :member
   
-  def add_item(product, price)
+  def add_item(product, price, video)
     if item = self.items.where(:product_id => product).first
       item.quantity += 1
       item.save
     else
-      self.items.create(:product_id => product, :price => price)
+      self.items.create(:product_id => product, :price => price, :video_id => video)
     end
   end
   

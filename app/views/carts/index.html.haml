@@ -8,6 +8,7 @@
       %td Subtotal
       %td 
         = number_to_currency @shopping_cart.subtotal
+  = link_to 'Place Order', "#"
 - else
   %h3 Your Shopping cart is empty!
   = link_to 'Continue shopping', products_path
