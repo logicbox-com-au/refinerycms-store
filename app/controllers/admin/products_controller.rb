@@ -12,11 +12,21 @@ module Admin
 
         render :json => @products.map(&:attributes)
       else
-        paginate_all_products
-
+        per_page = params[:per_page].present? ? params[:per_page].to_i : 20
+        params[:page] ||= 1
+        @products = Product
+        @products = case params[:order]
+                   when 'loved'
+                     @products.order('loves_count DESC').paginate(:page => params[:page], :per_page => per_page)
+                   when 'commented'
+                     @products.order('comments_count DESC').paginate(:page => params[:page], :per_page => per_page)
+                   else
+                     @products.paginate(:page => params[:page], :per_page => per_page)
+                   end
         render :partial => 'products' if request.xhr?
       end
     end
+
 
     def find_all_brands
       @brands = Brand.all

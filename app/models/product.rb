@@ -12,7 +12,7 @@ class Product < ActiveRecord::Base
 
   has_friendly_id :name, :use_slug => true
   
-  #has_many :comments, :as => :comentable
+  has_many :comments, :as => :comentable
 
   validates :name, :presence => true, :uniqueness => true
   validates :description, :presence => true

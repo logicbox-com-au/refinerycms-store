@@ -12,6 +12,7 @@ class CreateProducts < ActiveRecord::Migration
       t.integer :position
       t.integer :worns_count, :default => 0
       t.integer :loves_count, :default => 0
+      t.integer :comments_count, :default => 0
 
       t.timestamps
     end
