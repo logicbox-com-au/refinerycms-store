@@ -1,0 +1,13 @@
+%h2 Shopping Cart
+- unless @shopping_cart.items.empty?
+  %table
+    = render :partial => 'cart_item', :collection => @shopping_cart.items, :as => :item
+    %tr
+      %td
+      %td
+      %td Subtotal
+      %td 
+        = number_to_currency @shopping_cart.subtotal
+- else
+  %h3 Your Shopping cart is empty!
+  = link_to 'Continue shopping', products_path

@@ -16,4 +16,15 @@
     resources :brands, :only => [:new, :create ]
     resources :categories, :only => [:new, :create ]
   end
+  
+  resources :carts, :only => [:index, :create, :update]
+  
+  scope(:path => 'refinery', :as => 'admin', :module => 'admin') do
+    resources :carts, :except => :show do
+      collection do
+        post :update_positions
+      end
+    end
+  end
+  resources :cart_items, :only => [:destroy]
 end

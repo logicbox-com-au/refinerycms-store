@@ -1,8 +1,23 @@
 nb:
   plugins:
+    carts: 
+      title: Carts
     products:
       title: Products
   admin:
+    carts: 
+      actions: 
+        create_new: Lag en ny Cart
+        reorder: "Endre rekkef\xC3\xB8lgen p\xC3\xA5 Carts"
+        reorder_done: "Ferdig \xC3\xA5 endre rekkef\xC3\xB8lgen Carts"
+      records: 
+        title: Carts
+        sorry_no_results: Beklager! Vi fant ikke noen resultater.
+        no_items_yet: "Det er ingen Carts enda. Klikk p\xC3\xA5 \"Lag en ny Cart\" for \xC3\xA5 legge til din f\xC3\xB8rste cart."
+      cart: 
+        view_live_html: "Vis hvordan denne cart ser ut offentlig <br/><em>(\xC3\xA5pner i et nytt vindu)</em>"
+        edit: Rediger denne cart
+        delete: Fjern denne cart permanent
     products:
       actions:
         create_new: Lag en ny Product
@@ -16,6 +31,9 @@ nb:
         view_live_html: Vis hvordan denne product ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
         edit: Rediger denne product
         delete: Fjern denne product permanent
+  carts: 
+    show: 
+      other: Andre Carts
   products:
     show:
       other: Andre Products

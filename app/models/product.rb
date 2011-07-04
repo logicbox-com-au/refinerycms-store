@@ -27,6 +27,9 @@ class Product < ActiveRecord::Base
   
   has_many :love, :as => :loveable
   has_many :worn, :as => :wornable
+  has_many :cart_items
+  
+  before_destroy :ensure_not_referenced_by_any_cart_item
 
   def loved_by?(member)
     love.map(&:member_id).include? member.id if member
@@ -42,5 +45,14 @@ class Product < ActiveRecord::Base
 
   def self.by_category(category)
     joins(:category).where(:categories => {:name => category})
+  end
+  
+  def ensure_not_referenced_by_any_cart_item
+    if car_items.count.zero?
+      return true
+    else
+      errors[:base] << "Cart Items present"
+      return false
+    end
   end
 end
