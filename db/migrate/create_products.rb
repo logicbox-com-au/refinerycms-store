@@ -10,6 +10,9 @@ class CreateProducts < ActiveRecord::Migration
       t.integer :category_id
       t.integer :sub_category_id
       t.integer :position
+      t.integer :worns_count, :default => 0
+      t.integer :loves_count, :default => 0
+      t.integer :comments_count, :default => 0
 
       t.timestamps
     end

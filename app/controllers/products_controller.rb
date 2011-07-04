@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   helper :love
   helper :rank
+  helper :worn
 
   before_filter :find_page
 
@@ -33,7 +34,6 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-
     # you can use meta fields from your model instead (e.g. browser_title)
     # by swapping @page for @product in the line below:
     present(@page)

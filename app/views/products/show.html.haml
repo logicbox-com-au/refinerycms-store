@@ -15,5 +15,7 @@
       %li
         = love_button(@product)
       %li
+        = worn_button(@product)
+      %li
         = link_to 'Add to cart', carts_path(:product_id => @product.id), :method => :post
       %li share

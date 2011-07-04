@@ -8,6 +8,12 @@
     </li>
   <% end %>
   <li>
+    <%= link_to "Most loved", admin_products_path(:order => 'loved')  %>
+  </li>
+  <li>
+    <%= link_to "Most commented", admin_products_path(:order => 'commented')  %>
+  </li>
+  <li>
     <%= link_to t('.create_new'), new_admin_product_path,
                  :class => "add_icon" %>
   </li>
