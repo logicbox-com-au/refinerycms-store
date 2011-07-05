@@ -1,6 +1,6 @@
-%section#product.span-22.last.prepend-1
+%section#product.span-17.last
   %span.breadcrumb
-    MAKEUP : #{@product.category.name} : #{@product.name}
+    MAKEUP : #{@product.category.name if @product.category} : #{@product.name}
   #product_image.span-8.image
     - if @product.picture
       = image_tag @product.picture.thumbnail('260x260#').url
@@ -14,8 +14,14 @@
     %ul
       %li
         = love_button(@product)
-      %li
-        = worn_button(@product)
-      %li
-        = link_to 'Add to cart', carts_path(:product_id => @product.id), :method => :post
+      %li Add to cart
       %li share
+%section.span-23.last.relatedContent
+  %h3 Looks with this product
+  .span-23.last
+    = render :partial => 'shared/related_videos', :locals => { :related_videos => @related_videos }
+%section.span-23.last.relatedContent
+  %h3 Tell us why you love this product
+  .commentBox
+    = comment_list(@product)
+    = comment_form(@product)

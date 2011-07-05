@@ -1,11 +1,11 @@
-.item.product.span-4
+.item.product
   = link_to product_path(product) do
     %span.image
       - if product.picture
-        = image_tag product.picture.thumbnail('150x130#').url if product.picture
+        = image_tag product.picture.thumbnail('150x130#').url, :alt => product.name
       - else
         = image_tag 'small-product.jpg'
     %span.name
-      = product.name
+      = product.name.size > 15 ? "#{product.name.slice(0..15)}..." : product.name
     %span.info
       = number_to_currency product.price
