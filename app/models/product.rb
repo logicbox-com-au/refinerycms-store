@@ -26,7 +26,7 @@ class Product < ActiveRecord::Base
   belongs_to :sub_category, :class_name => 'Category'
   
   has_many :love, :as => :loveable
-  has_many :worn, :as => :wornable
+  has_many :worns, :as => :wornable
   has_many :cart_items
   
   before_destroy :ensure_not_referenced_by_any_cart_item
@@ -36,7 +36,7 @@ class Product < ActiveRecord::Base
   end
 
   def worn_by?(member)
-    worn.map(&:member_id).include? member.id if member
+    worns.map(&:member_id).include? member.id if member
   end
 
   def self.by_brand(brand)
