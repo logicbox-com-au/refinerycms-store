@@ -1,17 +1,15 @@
-%aside.leftMenu.span-5.first.prepend-1
+%aside.leftMenu.span-6.first
   %h4 Products
   %ul
+    = dinamic_filters
+    = manual_filters
     %li.branch
       %a.branchLink{:href => "#"} By brand
       %ul.leafs
+        - get_filters_for("brand","name")
+
 %section#product_list.itemsList.span-18.last
-  .rankMenu.push-7.span-11.last
-    %ul
-      %li
-        = link_to "most loved", most_loved
-      %li
-        = link_to "lowest price", lowest_price 
-      %li
-        = link_to "highest price", highest_price
+  = render 'rank'
   #products.items
     = render @products if @products
+  = paginator @products
