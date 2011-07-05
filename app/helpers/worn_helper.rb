@@ -14,7 +14,7 @@ module WornHelper
   end
 
   def get_kinds_list(obj)
-    content_tag(:ul, :class => "worn") { ["day", "work", "evening"].each do |kind|
+    content_tag(:ul, :class => "worns") { ["day", "work", "evening"].each do |kind|
       li = link_to kind, worn_path(:wornable_id => obj.id,
                                    :wornable_type => obj.class.name,
                                    :kind => kind), :remote => true, :method => :post
