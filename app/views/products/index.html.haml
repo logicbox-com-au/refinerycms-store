@@ -9,7 +9,15 @@
         - get_filters_for("brand","name")
 
 %section#product_list.itemsList.span-18.last
-  = render 'rank'
+  .rankMenu.push-1.span-17.last
+    %ul.sortMenu
+      %li
+        sort by:
+      %li
+        = link_to "most loved", most_loved
+      %li
+        = link_to "lowest price", lowest_price 
+      %li
+        = link_to "highest price", highest_price
   #products.items
     = render @products if @products
-  = paginator @products
