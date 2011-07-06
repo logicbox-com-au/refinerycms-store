@@ -1,6 +1,6 @@
 module ShareHelper
   def share_button(obj)
-    link = content_tag(:div, "SHARE".html_safe + get_share_list(obj), {:class => "worns"})
+    link = content_tag(:div, "SHARE".html_safe + get_share_list(obj), {:class => "share"})
     content_tag(:div, link, {:id => 'share'})
   end
 
