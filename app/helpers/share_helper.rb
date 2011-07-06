@@ -10,13 +10,20 @@ module ShareHelper
 
   def get_share_list(obj)
     content_tag(:ul){
-      mail = mail_to '','Mail', :subject => "[1O5 LOOKS]: #{obj.title}", :body => "#{obj.title} at #{video_path(obj)}"
+      mail = mail_to '','Mail', :subject => "[1O5 LOOKS]: #{obj.title}", :body => "#{obj.title} at #{source_path(obj)}"
       concat(content_tag(:li, mail))
-      tweet = link_to 'Tweet', 'http://twitter.com/share', 'data-url' => video_path(obj), 'data-text' => "#{obj.title}", 'data-count' => 'none', 'data-via' => '1O5LOOKS', 'data-lang' => 'en', :class => "twitter-share-button"
+      tweet = link_to 'Tweet', 'http://twitter.com/share', 'data-url' => source_path(obj), 'data-text' => "#{obj.title}", 'data-count' => 'none', 'data-via' => '1O5LOOKS', 'data-lang' => 'en', :class => "twitter-share-button"
       concat(content_tag(:li, tweet,{:id => "tweet"}))
-      face =  link_to 'Facebook', '', :share_url => video_path(obj), :name => 'fb_share'
+      face =  link_to 'Facebook', '', :share_url => source_path(obj), :name => 'fb_share'
       concat(content_tag(:li, face, {:id => "face"}))
     }
+  end
+
+  def source_path(obj)
+    case obj.class.name
+      when "Product" then product_path(obj)
+      when "Video" then video_path(obj)
+    end
   end
 
 end
