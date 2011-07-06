@@ -19,5 +19,7 @@
         = link_to "lowest price", lowest_price 
       %li
         = link_to "highest price", highest_price
+    = paginator @products
   #products.items
     = render @products if @products
+  = paginator @products
