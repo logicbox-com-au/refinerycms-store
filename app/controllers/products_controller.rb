@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   helper :love
   helper :rank
   helper :worn
+  helper :share
   include ProductsFilter
 
   before_filter :find_page

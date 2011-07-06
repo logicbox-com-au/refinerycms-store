@@ -16,7 +16,8 @@
         = love_button(@product)
       %li 
         = link_to 'Add to cart', carts_path(:product_id => @product.id), :method => :post
-      %li share
+      %li
+        = share_button(@product)
 %section.span-23.last.relatedContent
   %h3 Looks with this product
   .span-23.last
@@ -26,3 +27,11 @@
   .commentBox
     = comment_list(@product)
     = comment_form(@product)
+
+= javascript_include_tag 'http://platform.twitter.com/widgets.js'
+= javascript_include_tag 'http://static.ak.fbcdn.net/connect.php/js/FB.Share'
+
+:javascript
+  $(document).ready(function() {
+    $('li#face a span').removeClass("FBConnectButton FBConnectButton_Small FBConnectButton_Text");
+  });
