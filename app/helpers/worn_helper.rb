@@ -2,7 +2,7 @@ module WornHelper
   def worn_button(obj)
     if member_signed_in?
       if obj.worn_by?(current_member)
-        link = link_to "#{obj.worns.count} UNWORN", worn_path(:wornable_id => obj.id, :wornable_type => obj.class.name), :method => :delete
+        link = content_tag(:div, "#{obj.worns.count} WORN", :class => "worns")
       else
         link = content_tag(:div, "#{obj.worns.count} WORN".html_safe + get_kinds_list(obj),{:class => "worns"})
       end

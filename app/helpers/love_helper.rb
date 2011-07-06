@@ -2,7 +2,7 @@ module LoveHelper
   def love_button(obj)
     if member_signed_in?
       if obj.loved_by?(current_member)
-        link = link_to "#{obj.love.count} UNLOVE", love_path(:loveable_id => obj.id, :loveable_type => obj.class.name), :method => :delete
+       link = content_tag(:div, "#{obj.love.count} LOVE")
       else
         link = link_to "#{obj.love.count} LOVE", love_path(:loveable_id => obj.id, :loveable_type => obj.class.name), :remote => true, :method => :post
       end
