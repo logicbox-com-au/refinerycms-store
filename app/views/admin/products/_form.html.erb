@@ -10,11 +10,6 @@
   </div>
 
   <div class='field one_row_field'>
-    <%= f.label :price -%>
-    <%= f.text_field :price, :class=> 'price'  -%>
-  </div>
-
-  <div class='field one_row_field'>
     <%= f.label :brand -%>
     <%= collection_select('product', 'brand_id', @brands, :id, :name, :prompt => true) -%>
     <%= link_to 'Add brand', new_admin_brand_path(:dialog => true, :width => 300, 
@@ -23,7 +18,12 @@
   </div>
 
   <%= render :partial => 'admin/categories/categories', :locals => {:f => f, :resource => @product, :categories => @categories}%>
-
+  
+  <div class='field one_row_field'>
+    <%= f.label :price -%>
+    <%= f.text_field :price, :class=> 'price'  -%>
+  </div>
+  
   <div class='field'>
     <%= f.label :picture -%>
     <%= render :partial => "/shared/admin/image_picker", :locals => {
