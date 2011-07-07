@@ -7,10 +7,10 @@ module Admin
             :title_attribute => 'name', :xhr_paging => true
 
     def index
-      unless params[:q].blank?
-        @products = Product.where('name like ?', "%#{params[:q]}%").select("id,name")
-
-        render :json => @products.map(&:attributes)
+      unless params[:search].blank?
+        query_products= {:title_or_description_contains => params[:search] }
+        products = Product.search(query_products)
+        @products = products.relation
       else
         per_page = params[:per_page].present? ? params[:per_page].to_i : 20
         params[:page] ||= 1
