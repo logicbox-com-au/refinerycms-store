@@ -8,7 +8,7 @@ module Admin
 
     def index
       unless params[:search].blank?
-        query_products= {:title_or_description_contains => params[:search] }
+        query_products= {:name_or_description_contains => params[:search] }
         products = Product.search(query_products)
         @products = products.relation
       else
