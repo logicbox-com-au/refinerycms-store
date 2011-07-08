@@ -8,8 +8,8 @@ module Admin
 
     def index
       unless params[:q].blank?
-        @products = Product.where('title like ?', "%#{params[:q]}%").select("title,id")
-        render :json => @products.map! { |product| {"id" => product.id, "name" => product.title} }
+        @products = Product.where('name like ?', "%#{params[:q]}%").select("name,id")
+        render :json => @products.map! { |product| {"id" => product.id, "name" => product.name} }
       else
         unless params[:search].blank?
           query_products= {:name_or_description_or_category_name_or_sub_category_name_contains => params[:search]}
