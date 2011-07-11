@@ -45,7 +45,8 @@ class Product < ActiveRecord::Base
   end
 
   def self.by_category(category)
-    joins(:category).where(:categories => {:name => category})
+      category_id = category.to_i
+    joins(:category).where(:categories => {:id => category_id})
   end
   
   def ensure_not_referenced_by_any_cart_item
