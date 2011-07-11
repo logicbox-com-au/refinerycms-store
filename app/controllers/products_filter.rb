@@ -1,7 +1,8 @@
 module ProductsFilter
 
   def filter_by_brand!
-    @products = @products.by_brand(params[:brand_name]) if params[:brand_name]
+    return unless params[:kind] == 'brand'
+    @products = @products.by_brand(params[:kind_name])
   end
 
   def filter_by_category_name!

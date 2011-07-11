@@ -40,7 +40,8 @@ class Product < ActiveRecord::Base
   end
 
   def self.by_brand(brand)
-    joins(:brand).where(:brands => {:name => brand})
+    brand_id = brand.to_i
+    joins(:brand).where(:brands => {:id => brand_id})
   end
 
   def self.by_category(category)
