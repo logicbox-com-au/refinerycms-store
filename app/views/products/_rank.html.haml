@@ -1,8 +1,10 @@
-.rankMenu.push-7.span-11
-  %ul
+.rankMenu.push-1.span-17.last
+  %ul.sortMenu
     %li
-      = link_to "most loved", most_loved
+      sort by:
     %li
-      = link_to "lowest price", lowest_price 
+      = link_to "most loved", most_loved, (@order_by == 'loved')? {:class => 'selected'} : {}
     %li
-      = link_to "highest price", highest_price
+      = link_to "lowest price", lowest_price, (@order_by == 'lowest-price')? {:class => 'selected'} : {} 
+    %li
+      = link_to "highest price", highest_price, (@order_by == 'highest-price')? {:class => 'selected'} : {}
