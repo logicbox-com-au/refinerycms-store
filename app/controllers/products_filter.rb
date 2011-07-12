@@ -27,6 +27,6 @@ module ProductsFilter
       filter_by_brand!
     end
 
-    @products = @products.includes(:love).includes(:worn).paginate(:page => params[:page], :per_page => 32)
+    @products = @products.includes(:love).paginate(:page => params[:page], :per_page => 32)
   end
 end
