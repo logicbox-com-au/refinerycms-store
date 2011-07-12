@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
   helper :worn
   helper :share
   include ProductsFilter
+  include ResourcesFilter
 
   before_filter :find_page
 
