@@ -31,6 +31,8 @@ class Product < ActiveRecord::Base
   
   before_destroy :ensure_not_referenced_by_any_cart_item
 
+  delegate :name, :to => :slug, :prefix => true, :allow_nil => true
+
   def loved_by?(member)
     love.map(&:member_id).include? member.id if member
   end
