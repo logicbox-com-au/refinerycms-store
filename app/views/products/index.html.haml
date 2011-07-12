@@ -3,10 +3,8 @@
   %ul
     = dinamic_filters
     = manual_filters
-    %li.branch
-      %a.branchLink{:href => "#"} By brand
-      %ul.leafs
-        - get_filters_for("brand","name")
+
+    = new_products_brand_menu
 
 %section#product_list.itemsList.span-18.last
   .rankMenu.push-1.span-17.last
