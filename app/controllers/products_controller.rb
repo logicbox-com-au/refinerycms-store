@@ -8,18 +8,13 @@ class ProductsController < ApplicationController
   before_filter :find_page
 
   def index
-    sort_products!
-
-    apply_manual_filters!
-
-    filter_by_brand!
-    filter_by_category_name!
-
-    @products = @products.paginate(:page => params[:page])
- 
-    # you can use meta fields from your model instead (e.g. browser_title)
-    # by swapping @page for @product in the line below:
     present(@page)
+
+    products!
+
+    @branch = params[:kind] ? params[:kind] : params[:resource]
+    @leaf = params[:kind_name] ? params[:kind_name] : params[:filter_name]
+    
   end
 
   def show
