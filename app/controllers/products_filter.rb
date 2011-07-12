@@ -12,7 +12,7 @@ module ProductsFilter
 
   def products!
     if params[:search]
-      query {:name_or_description_contains => params[:search][:query]}
+      query = {:name_or_description_contains => params[:search][:query]}
       @products = Product.search(query)
     else
       @resource = params[:resource].to_sym unless params[:resource].nil?
