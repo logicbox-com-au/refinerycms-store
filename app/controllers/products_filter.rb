@@ -22,6 +22,7 @@ module ProductsFilter
       end
 
       @products = Product.order(sort_condition)
+      apply_dynamic_filters!
 
       filter_by_category_name!
       filter_by_brand!
