@@ -14,6 +14,6 @@ module LoveHelper
   end
 
   def love_counter(obj)
-    content_tag(:span, "#{obj.love.count} LOVE", :class => 'loveCount')
+    content_tag(:span, "#{obj.love.size} LOVE", :class => 'loveCount')
   end
 end

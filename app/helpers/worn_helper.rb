@@ -23,6 +23,6 @@ module WornHelper
   end
 
   def worn_counter(obj)
-    content_tag(:span, "#{obj.worns.count} WORN", :class => 'wornCount')
+    content_tag(:span, "#{obj.worns.size} WORN", :class => 'wornCount')
   end
 end
