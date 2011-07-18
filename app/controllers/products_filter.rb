@@ -19,7 +19,7 @@ module ProductsFilter
       @products = Product.order(sort_condition)
       apply_dynamic_filters! :products
 
-      #filter_by_brand!
+      filter_by_brand!
     end
 
     @products = @products.includes(:love).paginate(:page => params[:page], :per_page => 32)
