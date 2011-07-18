@@ -5,11 +5,6 @@ module ProductsFilter
     @products = @products.by_brand(params[:kind_name])
   end
 
-  def filter_by_category_name!
-    return unless params[:kind] == 'category'
-    @products = @products.by_category(params[:kind_name])
-  end
-
   def products!
     if params[:search]
       query = {:name_or_description_contains => params[:search][:query]}
@@ -24,8 +19,7 @@ module ProductsFilter
       @products = Product.order(sort_condition)
       apply_dynamic_filters! :products
 
-      filter_by_category_name!
-      filter_by_brand!
+      #filter_by_brand!
     end
 
     @products = @products.includes(:love).paginate(:page => params[:page], :per_page => 32)
