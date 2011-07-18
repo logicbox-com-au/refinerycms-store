@@ -29,6 +29,7 @@ class Product < ActiveRecord::Base
   has_many :worns, :as => :wornable
   has_many :cart_items
   
+  after_save :expire_cache
   before_destroy :ensure_not_referenced_by_any_cart_item
 
   delegate :name, :to => :slug, :prefix => true, :allow_nil => true
@@ -58,5 +59,10 @@ class Product < ActiveRecord::Base
       errors[:base] << "Cart Items present"
       return false
     end
+  end
+
+private
+  def expire_cache
+    Rails.cache.delete("views/product_thumbnail/#{self.id}")
   end
 end
