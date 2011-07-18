@@ -4,7 +4,7 @@
     = dinamic_filters @dynamic_menus
     = manual_filters
 
-    - if root?
+    - if @filter_options[:brand]
       = new_products_brand_menu
 
 %section#product_list.itemsList.span-18.last
