@@ -1,1 +1,1 @@
-$('#votes').replaceWith("<%= escape_javascript(love_button(@love.loveable)) %>")
+$('#<%= love_div_id(@love.loveable) %>').replaceWith("<%= escape_javascript(love_button(@love.loveable)) %>")

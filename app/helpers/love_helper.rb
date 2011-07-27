@@ -10,7 +10,16 @@ module LoveHelper
       link = link_to "#{obj.love.count} LOVE", new_member_session_path
     end
     count = obj.love.count
-    content_tag(:div, link, {:id => 'votes'})
+    content_tag(:div, link, {:id => love_div_id(obj)})
+  end
+
+  def love_div_id(obj)
+    case obj.class.name
+      when 'Product' then "product_#{obj.id}_love"
+      when 'Video' then "video_#{obj.id}_love"
+      else
+        "votes"
+    end
   end
 
   def love_counter(obj)
