@@ -8,7 +8,7 @@ module ShareHelper
     content_tag(:ul) {
       mail = mail_to '', 'Mail', :subject => "[1O5 LOOKS]: #{obj.title}", :body => "#{obj.title} at #{source_url(obj)}"
       concat(content_tag(:li, mail))
-      tweet = link_to 'Tweet', 'http://twitter.com/share', 'data-url' => source_url(obj), 'data-text' => "#{obj.title}", 'data-count' => 'none', 'data-via' => '1O5LOOKS', 'data-lang' => 'en', :class => "twitter-share-button"
+      tweet = link_to 'Tweet', 'http://twitter.com/share', 'data-url' => source_url(obj), 'data-text' => "#{obj.title}", 'data-count' => 'none', 'data-via' => '105LOOKS', 'data-lang' => 'en', :class => "twitter-share-button"
       concat(content_tag(:li, tweet, {:id => "tweet"}))
       face = link_to '', '', :share_url => source_url(obj), :name => 'fb_share'
       concat(content_tag(:li, face, {:id => "face"}))
