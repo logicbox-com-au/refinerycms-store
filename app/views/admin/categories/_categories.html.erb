@@ -5,6 +5,18 @@
     <%= f.collection_select( 'sub_category_id', resource.category ? resource.category.children : [], :id, :name, {:prompt => true}, {:id => 'sub_categories_select'}) -%>
     <%= link_to 'Add category', new_admin_category_path(:dialog => true, :width => 300, :height => 250),
                                                      { :class => 'button', :id => 'add-category-link' } %>
+    <%= link_to('Delete category','',
+                :remote => true,
+                :title => "Delete selected Category/Sub category",
+                :id => "delete-category-link",
+                :method => :delete,
+                :confirm => "This will delete the category permanently",
+                :class => "button-delete") %>
+
+
+
+
+
   </div>
 
   <div id="hidden_subcategories" class="hidden" >
@@ -26,7 +38,25 @@
         $("select#sub_categories_select").empty();
         $("select#sub_categories_select").append( sub_category_options );
       });
+
+      $("#delete-category-link").live('click' , function(){
+        var category_id = "";
+        var subcategory_id = "";
+        $("select#categories_select option:selected").each(function () { category_id += $(this).val(); });
+        $("select#sub_categories_select option:selected").each(function () { subcategory_id += $(this).val(); });
+        $.ajax({
+          type: "DELETE",
+          url: "<%= admin_category_path %>",
+          error: function(){ alert("An error has been occurred. Contact your system administrator"); },
+          data : [
+            {name:"id",value: category_id },
+            {name:"category",value: category_id },
+            {name:"sub_category", value: subcategory_id } ]
+        });
+        return false;
+      });
     });
+
   </script>
 <% end %>
 

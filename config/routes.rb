@@ -11,6 +11,7 @@
     end
     resources :brands, :only => [:new, :create ]
     resources :categories, :only => [:new, :create ]
+    resource :category, :only => :destroy
   end
   
   resources :carts, :only => [:index, :create, :update]
